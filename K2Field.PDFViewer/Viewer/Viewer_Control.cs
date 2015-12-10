@@ -13,26 +13,26 @@ using SourceCode.SmartObjects.Client;
 using SourceCode.Hosting.Client;
 
 
-[assembly: WebResource("K2Field.PDFViewer.Viewer.Viewer_Script.js", "text/javascript", PerformSubstitution = true)]
-
 [assembly: WebResource("K2Field.PDFViewer.Viewer.Viewer_Stylesheet.css", "text/css", PerformSubstitution = true)]
 
-[assembly: WebResource("K2Field.PDFViewer.Viewer.main.js", "text/javascript", PerformSubstitution = false)]
+
 [assembly: WebResource("K2Field.PDFViewer.Viewer.pdf.js", "text/javascript", PerformSubstitution = false)]
 [assembly: WebResource("K2Field.PDFViewer.Viewer.pdf.worker.js", "text/javascript", PerformSubstitution = false)]
+[assembly: WebResource("K2Field.PDFViewer.Viewer.main.js", "text/javascript", PerformSubstitution = false)]
+
+[assembly: WebResource("K2Field.PDFViewer.Viewer.Viewer_Script.js", "text/javascript", PerformSubstitution = true)]
 namespace K2Field.PDFViewer.Viewer
 {
     //specifies the location of the embedded definition xml file for the control
     [ControlTypeDefinition("K2Field.PDFViewer.Viewer.Viewer_Definition.xml")]
-    [ClientScript("K2Field.PDFViewer.Viewer.Viewer_Script.js")]
+   
     
     [ClientCss("K2Field.PDFViewer.Viewer.Viewer_Stylesheet.css")]
 
     [ClientScript("K2Field.PDFViewer.Viewer.pdf.js")]
     [ClientScript("K2Field.PDFViewer.Viewer.pdf.worker.js")]
     [ClientScript("K2Field.PDFViewer.Viewer.main.js")]
-   
-
+    [ClientScript("K2Field.PDFViewer.Viewer.Viewer_Script.js")]
     public class Control : BaseControl
     {
         #region Control Properties
@@ -189,7 +189,16 @@ namespace K2Field.PDFViewer.Viewer
     <canvas id='canvas'></canvas>
   </div> ";
             ctrl.Text = strScript;
-            ctrl.RenderControl(writer);
+            switch (base.State)
+            {
+                case SourceCode.Forms.Controls.Web.Shared.ControlState.Designtime:
+                    break;
+                case SourceCode.Forms.Controls.Web.Shared.ControlState.Preview:
+                    break;
+                case SourceCode.Forms.Controls.Web.Shared.ControlState.Runtime:
+                    ctrl.RenderControl(writer);
+                    break;
+            }
         }
         #endregion
 
@@ -199,10 +208,7 @@ namespace K2Field.PDFViewer.Viewer
         /// Feel free to add code and properties to the output element
         /// </summary>
 
-        private void getSmartFileFromSMO(string smoName) { 
-        
-        }
-
+     
     }
 
     

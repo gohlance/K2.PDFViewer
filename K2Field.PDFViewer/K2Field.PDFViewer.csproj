@@ -59,7 +59,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SourceCode.Forms">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\K2 blackpearl\K2 smartforms Runtime\bin\SourceCode.Forms.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\K2 blackpearl\K2 smartforms Runtime\bin\SourceCode.Forms.dll</HintPath>
     </Reference>
     <Reference Include="SourceCode.Forms.Client, Version=4.0.0.0, Culture=neutral, PublicKeyToken=16a2c5aaaa1b130d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -82,6 +82,7 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\K2 blackpearl\Bin\SourceCode.SmartObjects.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -91,6 +92,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Viewer\GetFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Viewer\Viewer_Control.cs" />
   </ItemGroup>
@@ -105,7 +107,9 @@
     <None Include="ReadMe.htm" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Viewer\Viewer_Definition.xml" />
+    <EmbeddedResource Include="Viewer\Viewer_Definition.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Viewer\Viewer_Script.js" />

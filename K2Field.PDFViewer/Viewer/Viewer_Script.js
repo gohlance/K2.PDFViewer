@@ -3,14 +3,14 @@
     //TODO: if necessary, add additional statements to initialize each part of the namespace before your Viewer is called. 
     if (typeof K2Field === "undefined" || K2Field == null) K2Field = {};
     if (typeof K2Field.PDFViewer === "undefined" || K2Field.PDFViewer == null) K2Field.PDFViewer = {};
-    if (typeof K2Field.PDFViewer.Viewer === "undefined" || K2Field.PDFViewer.Viewer == null) K2Field.PDFViewer.Viewer = {};
-
+   // if (typeof K2Field.PDFViewer.Viewer === "undefined" || K2Field.PDFViewer.Viewer == null) K2Field.PDFViewer.Viewer = {};
+    var tempURL;
     K2Field.PDFViewer.Viewer = {
 
         //internal method used to get a handle on the control instance
         _getInstance: function (id) {
             //alert("_getInstance(" + id + ")");
-            var control = $('#' + id);
+            var control = jQuery('#' + id);
             if (control.length == 0) {
                 throw 'Viewer \'' + id + '\' not found';
             } else {
@@ -38,11 +38,27 @@
                 instance.value = objInfo.Value;
                 raiseEvent(objInfo.CurrentControlId, 'Control', 'OnChange');
             }
+            var filetemp;
+            $(function () {
+                var controlid = document.getElementsByClassName('SFC K2Field-PDFViewer-Viewer-Control')[0].id;
+                var control = K2Field.PDFViewer.Viewer._getInstance(controlid).value;
+
+                $.ajax(
+                        {
+                             type: 'POST',
+                             url: 'K2Field.PDFViewer/GetFileFromIsolatedStorage.handler',
+                             cache: false,
+                             data: { control: control },
+                             async:false
+                         }).done(function (file) {
+                             tempURL = file;   
+                         });
+            });
         },
 
         //retrieve a property for the control
         getProperty: function (objInfo) {
-            //alert("getProperty(" + objInfo.property + ") for control " + objInfo.CurrentControlId);
+           
             if (objInfo.property.toLowerCase() == "value") {
                 return K2Field.PDFViewer.Viewer.getValue(objInfo);
             }
@@ -109,6 +125,40 @@
             });
 
             StyleHelper.setStyles(options, styles);
+        },
+        execute: function (objInfo) {
+            var parameters = objInfo.methodParameters;
+            var method = objInfo.methodName;
+            var result = "";
+            var currentControlID = objInfo.CurrentControlID;
+            switch (method) {
+                case "displayPDF":
+                    //var pdfAsDataUri = "data:application/pdf;base64," + tempvalue;
+                    //alert("This is tempvalue : " + tempvalue);
+                    //alert("This is pdfAsDataURI : " + pdfAsDataUri);
+                    //var encodedString = Base64.encode(pdfAsDataUri);
+                    ////console.log(encodedString); // Outputs: "SGVsbG8gV29ybGQh"
+                    //alert("Encoded String : " + encodedString);
+                    //// Decode the String
+                    //var decodedString = Base64.decode(encodedString);
+                    //console.log(decodedString);
+                   // alert("Temp URL VALUE : " + tempURL);
+                    PDFJS.getDocument(tempURL).then(function (pdf) {
+                        pdfFile = pdf;
+                     //   alert("Num of pages : " + pdfFile.numPages);
+                        pdfFile.crossOrigin = ' ';
+                        document.getElementById('page_count').textContent = pdfFile.numPages;
+
+                        pageNum = pdfFile.numPages;
+                        //alert("This is pageNum :" +pageNum);
+                        //alert("This is currPageNumber : " + currPageNumber);
+                        openPage(pdf, currPageNumber, 1);
+                        // renderPage(pageNum);
+                    });
+                    //alert('done with execute function');
+                    break;
+                    //console.log('done');
+            }
         }
     };
 })(jQuery);

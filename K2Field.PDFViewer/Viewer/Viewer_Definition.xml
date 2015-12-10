@@ -55,6 +55,16 @@ See the file below for samples and descriptions of the values you may have in th
       Available Data types are:
       AutoGuid, AutoNumber, DateTime, Decimal, File, Guid, HyperLink, Image, Memo, MultiValue, Number, Text, Xml, YesNo
   -->
+  <ExecuteMethod>K2Field.PDFViewer.Viewer.execute</ExecuteMethod>
+  <Methods>
+    <Method ResultType="None">
+      <Name>displayPDF</Name>
+      <DisplayName>Display PDF</DisplayName>
+      <Description>Display PDF</Description>
+    </Method>
+  </Methods>
+
+
   <DataTypes>
     <DataType>Text</DataType>
     <DataType>Memo</DataType>
@@ -63,13 +73,7 @@ See the file below for samples and descriptions of the values you may have in th
   <!--<Events> lists all the events that the control exposes. These events are listed in the Rules editor.
       Event handlers for non-standard JQuery events must be implemented in the control's .js file
   -->
-  <Events>
-    <Event>OnClick</Event>
-    <Event>OnChange</Event>
-  </Events>
-  
-  <!--<DefaultEventName> is the default event that the Rules composer will select when the designer creates a rule for the control-->
-  <DefaultEventName>OnClick</DefaultEventName>
+
  
   <!--<Properties> defines the various properties that the control may have. These are usually shown in the 
   Properties tab when you design the form and select the control
