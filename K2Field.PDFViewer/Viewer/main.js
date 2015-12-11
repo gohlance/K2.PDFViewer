@@ -35,6 +35,10 @@ var currPageNumber = 1;
 var fitScale = 1;
 var zoomed = false;
 
+var lance_viewportHeight;
+var lance_viewportWidth;
+var lance_scale;
+
 pageElement.addEventListener('touchstart', function (e) {
     touchDown = true;
 
@@ -95,9 +99,21 @@ function renderPage(num) {
     pageRendering = true;
     // Using promise to fetch the page
     pdfFile.getPage(num).then(function (page) {
-        var viewport = page.getViewport(scale);
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+        //Original
+        //var viewport = page.getViewport(1);
+        //canvas.height = viewport.height;
+        //canvas.width = viewport.width;
+
+
+        //To render the page in a specific size
+        
+      //  console.log("1-1 Viewport : " + lance_viewportHeight + " / " + lance_viewportWidth + " Scale : " + lance_scale);
+       
+        var viewport = page.getViewport(lance_scale);
+        canvas.height = lance_viewportHeight;
+        canvas.width = lance_viewportWidth;
+
+        //console.log("2. Viewport : " + viewport.height + " / " + viewport.width + " Scale : " + scale);
 
         // Render PDF page into canvas context
         var renderContext = {
@@ -134,15 +150,21 @@ var openPage = function (pdfFile, pageNumber) {
 
     pdfFile.getPage(pageNumber).then(function (page) {
         viewport = page.getViewport(1);
-
-        if (zoomed) {
-            var scale = pageElement.clientWidth / viewport.width;
-            viewport = page.getViewport(scale);
-        }
-
+     //   console.log("1.1 Viewport : " + viewport.height + " / " + viewport.width + " Scale : " + scale);
+        //if (zoomed) {
+        //    var scale = pageElement.clientWidth / viewport.width;
+        //    viewport = page.getViewport(scale);
+        //}
+        scale = pageElement.clientWidth / viewport.width;
+        viewport = page.getViewport(scale);
         canvas.height = viewport.height;
         canvas.width = viewport.width;
-
+   //     console.log("1.2 Viewport : " + viewport.height + " / " + viewport.width + " Scale : " + scale);
+        lance_scale = scale;
+        lance_viewportHeight = viewport.height;
+        lance_viewportWidth = viewport.width;
+   //     console.log("1-1 Viewport : " + lance_viewportHeight + " / " + lance_viewportWidth + " Scale : " + lance_scale);
+//
         var renderContext = {
             canvasContext: context,
             viewport: viewport

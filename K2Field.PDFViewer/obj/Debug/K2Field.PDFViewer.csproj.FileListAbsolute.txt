@@ -18,3 +18,13 @@ C:\Users\Administrator\Documents\Visual Studio 2013\Projects\K2Field.PDFViewer (
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\K2Field.PDFViewer (2)\K2Field.PDFViewer\K2Field.PDFViewer\obj\Debug\K2Field.PDFViewer.pdb
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\K2Field.PDFViewer (2)\K2Field.PDFViewer\K2Field.PDFViewer\bin\Debug\SourceCode.Workflow.Client.dll
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\K2Field.PDFViewer (2)\K2Field.PDFViewer\K2Field.PDFViewer\bin\Debug\SourceCode.Security.Web.dll
+C:\Users\Administrator\Documents\K2.PDFViewer\K2Field.PDFViewer\bin\Debug\DeRegisterCustomControl.bat
+C:\Users\Administrator\Documents\K2.PDFViewer\K2Field.PDFViewer\bin\Debug\RegisterCustomControl.bat
+C:\Users\Administrator\Documents\K2.PDFViewer\K2Field.PDFViewer\bin\Debug\K2Field.PDFViewer.dll
+C:\Users\Administrator\Documents\K2.PDFViewer\K2Field.PDFViewer\bin\Debug\K2Field.PDFViewer.pdb
+C:\Users\Administrator\Documents\K2.PDFViewer\K2Field.PDFViewer\bin\Debug\SourceCode.HostClientAPI.dll
+C:\Users\Administrator\Documents\K2.PDFViewer\K2Field.PDFViewer\bin\Debug\SourceCode.Workflow.Client.dll
+C:\Users\Administrator\Documents\K2.PDFViewer\K2Field.PDFViewer\bin\Debug\SourceCode.Security.Web.dll
+C:\Users\Administrator\Documents\K2.PDFViewer\K2Field.PDFViewer\obj\Debug\K2Field.PDFViewer.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\K2.PDFViewer\K2Field.PDFViewer\obj\Debug\K2Field.PDFViewer.dll
+C:\Users\Administrator\Documents\K2.PDFViewer\K2Field.PDFViewer\obj\Debug\K2Field.PDFViewer.pdb
