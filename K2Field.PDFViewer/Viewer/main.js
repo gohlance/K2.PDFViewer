@@ -155,7 +155,9 @@ var openPage = function (pdfFile, pageNumber) {
         //    var scale = pageElement.clientWidth / viewport.width;
         //    viewport = page.getViewport(scale);
         //}
-        scale = pageElement.clientWidth / viewport.width;
+
+       // scale = pageElement.clientWidth / viewport.width;
+        scale = 1;
         viewport = page.getViewport(scale);
         canvas.height = viewport.height;
         canvas.width = viewport.width;

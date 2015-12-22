@@ -14,7 +14,7 @@ using SourceCode.Hosting.Client;
 
 
 [assembly: WebResource("K2Field.PDFViewer.Viewer.Viewer_Stylesheet.css", "text/css", PerformSubstitution = true)]
-
+[assembly: WebResource("K2Field.PDFViewer.Viewer.Viewer_Script.js", "text/javascript", PerformSubstitution = true)]
 
 [assembly: WebResource("K2Field.PDFViewer.Viewer.pdf.js", "text/javascript", PerformSubstitution = false)]
 [assembly: WebResource("K2Field.PDFViewer.Viewer.pdf.worker.js", "text/javascript", PerformSubstitution = false)]
@@ -28,7 +28,7 @@ namespace K2Field.PDFViewer.Viewer
    
     
     [ClientCss("K2Field.PDFViewer.Viewer.Viewer_Stylesheet.css")]
-
+ 
     [ClientScript("K2Field.PDFViewer.Viewer.pdf.js")]
     [ClientScript("K2Field.PDFViewer.Viewer.pdf.worker.js")]
     [ClientScript("K2Field.PDFViewer.Viewer.main.js")]
